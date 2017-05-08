@@ -14,18 +14,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Book::orderBy('id', 'DESC')->get();
+        return view('dashboard', compact('contacts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -50,35 +42,14 @@ class BookController extends Controller
                 'title' => '¡Bien hecho!',
                 'message' => 'Datos almacenados correctamente.',
                 'status' => '200',
+                'data' => $request->all()
             ]);
         }
 
-        $contact = new Book();
-        $contact->save($request->all());
+        $contact = new Book($request->all());
+        $contact->save();
         return  redirect('/', 301);
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -88,19 +59,61 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'document' => 'required|max:11',
+            'email' => 'required|max:255|email',
+            'phone' => 'required|digits_between:7,10',
+        ]);
+
+        if($request->ajax()){
+            $contact = Book::find($request->id);
+            $contact->name = $request->name;
+            $contact->document = $request->document;
+            $contact->email = $request->email;
+            $contact->phone = $request->phone;
+            $contact->save();
+            return response()->json([
+                'success' => 'success',
+                'title' => '¡Bien hecho!',
+                'message' => 'Datos actualizados correctamente.',
+                'status' => '200',
+            ]);
+        }
+
+        $contact = Book::find($request->id);
+        $contact->name = $request->name;
+        $contact->document = $request->document;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->save();
+        return  redirect('/', 301);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        if($request->ajax()){
+            $contact = Book::find($request->id);
+            $contact->forceDelete();
+            return response()->json([
+                'success' => 'success',
+                'title' => '¡Bien hecho!',
+                'message' => 'Datos eliminados correctamente.',
+                'status' => '200',
+            ]);
+        }
+
+        $contact = Book::find($request->id);
+        $contact->forceDelete();
+        return  redirect('/', 301);
     }
 }

@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', [
+    'uses' => 'BookController@index',
+    'as'  => 'get'
+]);

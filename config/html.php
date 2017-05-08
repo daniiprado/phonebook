@@ -79,15 +79,9 @@ return [
 
     'sidebar' => [
         'phonebook' => [
-            'submenu' => [
-                'create' => ['url' => '/', 'title' => 'Añadir Contacto', 'icon' => 'assignment_ind'],
-                'view' =>   ['url' => 'phonebook/view', 'title' => 'Ver Contactos', 'icon' => 'developer_board'],
-                'edit' => ['url' => 'phonebook/edit', 'title' => 'Modificar Contactos', 'icon' => 'mode_edit'],
-            ],
             'title' => 'Directorio',
             'icon' => 'contacts',
-            'url'   => '#formsExamples',
-            'div'   => 'formsExamples'
+            'url'   => '/',
         ],
     ],
 ];

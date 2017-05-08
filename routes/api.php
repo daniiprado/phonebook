@@ -22,4 +22,20 @@ Route::group(['prefix' => 'phonebook'], function () {
         'uses' => 'BookController@store',
         'as'  => 'create'
     ]);
+
+    Route::get('/get', [
+        'uses' => 'BookController@index',
+        'as'  => 'get'
+    ]);
+
+    Route::post('/edit', [
+        'uses' => 'BookController@update',
+        'as'  => 'edit'
+    ]);
+
+    Route::post('/delete', [
+        'uses' => 'BookController@destroy',
+        'as'  => 'delete'
+    ]);
+
 });
