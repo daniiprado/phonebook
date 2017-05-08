@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Styde\Html\HtmlServiceProvider::class,
+        //Yajra\Datatables\DatatablesServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,6 +231,7 @@ return [
          * Package Aliases...
          */
         'Access' => Styde\Html\Facades\Access::class,
+        //'Datatables' => Yajra\Datatables\Facades\Datatables::class,
     ],
 
 ];
