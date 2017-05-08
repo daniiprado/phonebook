@@ -22,9 +22,4 @@ Route::group(['prefix' => 'phonebook'], function () {
         'uses' => 'BookController@store',
         'as'  => 'create'
     ]);
-
-    Route::resource('/actions', [
-        'uses' => 'Buttons\EloquentController',
-        'as'  => 'actions'
-    ]);
 });

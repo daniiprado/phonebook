@@ -11,21 +11,14 @@
             <div class="card">
                 <div class="card-content">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card-header card-header-icon" data-background-color="green">
-                                <i class="material-icons">assignment_ind</i>
+                        <div class="col-md-12 text-center">
+                            <div class="card-header">
+                                <h4 class="card-title">Modal</h4>
                             </div>
-                            <div class="card-content">
-                                <h4 class="card-title">Directorio</h4>
-                                <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#add-user">
-                                    <i class="material-icons">assignment_ind</i> Nuevo Contacto
-                                </button>
-
-                                <div class="material-datatables">
-                                    {!! $dataTable->table()  !!}
-                                </div>
-                            </div>
-                            <!-- Register Modal -->
+                            <button class="btn btn-primary btn-raised btn-round" data-toggle="modal" data-target="#add-user">
+                                <i class="material-icons">assignment_ind</i> Nuevo Contacto
+                            </button>
+                            <!-- Classic Modal -->
                             <div class="modal fade" id="add-user" tabindex="-1" role="dialog" aria-labelledby="addUser" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -54,7 +47,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--  End Register Modal -->
+                            <!--  End Modal -->
                         </div>
                     </div>
                 </div>
@@ -72,7 +65,6 @@
 @endpush
 
 @push('functions')
-  {!! $dataTable->scripts() !!}
   <script src="{{ asset('js/custom.js') }}"></script>
   <script type="text/javascript">
       jQuery(document).ready(function() {
