@@ -1,16 +1,11 @@
-<div id="field_{{ $id }}"{!! Html::classes(['form-group', 'has-error' => $hasErrors]) !!}>
-    <label for="{{ $id }}" class="control-label">
-        {{ $label }}
-    </label>
-
-    @if ($required)
-        <span class="label label-info">Required</span>
-    @endif
-
-    <div class="controls">
+<div id="field_{{ $id }}"{!! Html::classes(['form-group label-floating', 'is-empty has-error' => $hasErrors]) !!}>
+    <div class="input-icon">
         {!! $input !!}
-        @foreach ($errors as $error)
-            <p class="help-block">{{ $error }}</p>
-        @endforeach
+        {{ Form::label($id, $label, ['class' => 'control-label']) }}
+        @if (!empty($errors))
+            @foreach ($errors as $error)
+                <span id="{{ $id }}-error" class="help-block text-danger">{{ $error }}</span>
+            @endforeach
+        @endif
     </div>
 </div>

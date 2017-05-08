@@ -12,4 +12,10 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+    .styles([
+       'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+       'resources/assets/css/material-dashboard.css',
+       'resources/assets/css/theme.css',
+       'https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css',
+       'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+   ], 'public/css/app.css');
