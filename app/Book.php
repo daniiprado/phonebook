@@ -12,7 +12,7 @@ class Book extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'document', 'email', 'phone',
+        'name', 'document', 'email', 'phone', 'created_at', 'updated_at',
     ];
 
     /**
@@ -21,6 +21,6 @@ class Book extends Model
      * @var array
      */
     protected $hidden = [
-        'created_at', 'updated_at',
+
     ];
 }

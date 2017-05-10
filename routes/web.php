@@ -15,3 +15,7 @@ Route::get('/', [
     'uses' => 'BookController@index',
     'as'  => 'get'
 ]);
+
+Route::get('/datatable', function () {
+    return view('datatable');
+});

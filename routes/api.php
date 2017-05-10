@@ -28,6 +28,11 @@ Route::group(['prefix' => 'phonebook'], function () {
         'as'  => 'get'
     ]);
 
+    Route::get('/datatable', [
+        'uses' => 'BookController@table',
+        'as'  => 'table'
+    ]);
+
     Route::post('/edit', [
         'uses' => 'BookController@update',
         'as'  => 'edit'

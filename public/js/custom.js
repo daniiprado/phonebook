@@ -85,8 +85,10 @@ var FormValidation = function () {
                                 confirmButtonClass: "btn btn-success",
                                 type: data.success,
                             }).then(function () {
+                                var table = $('#datatables').DataTable();
+                                ajax: 'http://127.0.0.1:8000/api/phonebook/datatable';
+                                table.ajax.reload();
                                 $('#add-user').modal('hide');
-                                location.reload();
                             });
                     },
                     error: function(data){
@@ -193,8 +195,10 @@ var FormValidation = function () {
                                 confirmButtonClass: "btn btn-success",
                                 type: data.success,
                             }).then(function () {
+                            var table = $('#datatables').DataTable();
+                            ajax: 'http://127.0.0.1:8000/api/phonebook/datatable';
+                            table.ajax.reload();
                                 $('#edit-user').modal('hide');
-                                location.reload();
                             });
                     },
                     error: function(data){

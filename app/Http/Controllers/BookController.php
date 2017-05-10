@@ -3,6 +3,7 @@
 namespace PhoneBook\Http\Controllers;
 
 use PhoneBook\Book;
+use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -16,6 +17,22 @@ class BookController extends Controller
     {
         $contacts = Book::orderBy('id', 'DESC')->get();
         return view('dashboard', compact('contacts'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function table()
+    {
+        $c = Book::all();
+
+        //dd(Datatables::of($c)->make(true));
+        return Datatables::of($c)
+            ->addIndexColumn()
+            ->make(true);
+        //return Datatables::eloquent(Book::query())->make(true);
     }
 
 
